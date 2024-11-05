@@ -1,0 +1,41 @@
+{
+  "name": "dark-mode",
+  "productName": "dark mode",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "linux": "electron-builder -l",
+    "win": "electron-builder -w"
+  },
+  "keywords": [
+    "dark mode"
+  ],
+  "build": {
+    "asar": true,
+    "linux": {
+      "target": "appimage"
+    },
+    "appId": "com.dark.mode",
+    "productName": "my-dark-mode",
+    "win": {
+      "target": "nsis-web"
+    },
+    "nsisWeb": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "licence": "./LICENCE"
+    },
+    "publish": {
+      "provider": "generic",
+      "url": "https://www.github.com/AlijonMurodov/dark-mode"
+    }
+  },
+  "author": "hamster",
+  "license": "MIT",
+  "description": "simple dark mode",
+  "devDependencies": {
+    "electron": "^33.0.1",
+    "electron-builder": "^25.1.8"
+  }
+}
