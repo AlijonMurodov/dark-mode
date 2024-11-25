@@ -19,25 +19,26 @@
     "electron-builder": "^25.1.8"
   },
   "build": {
-    "asarUnpack":"script",
-    "nsisWeb":{
+    "asarUnpack": "build",
+    "nsisWeb": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "license": "./LICENCE",
-      "appPackageUrl":"https://github.com/AlijonMurodov/dark-mode/releases/download/1.0.0/",
-      "artifactName":"dark-mode-${version} Setup.${ext}"
+      "appPackageUrl": "https://github.com/AlijonMurodov/dark-mode/releases/download/1.0.0/",
+      "artifactName": "dark-mode-${version} Setup.${ext}"
     },
     "appId": "com.example.app",
     "productName": "my-app",
-    "linux":{
-      "target":"AppImage"
+    "linux": {
+      "target": "AppImage"
     },
-    "win":{
-      "target":"nsis-web"
+    "win": {
+      "target": "nsis-web"
     }
   },
   "dependencies": {
     "@electron-forge/cli": "^7.5.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "sqlite3": "^5.1.7"
   }
 }

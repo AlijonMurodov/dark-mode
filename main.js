@@ -1,12 +1,12 @@
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron/main')
 const path = require('node:path')
-
+const {getData} = require('./db')
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      devTools: false,
+      //devTools: false,
       contextIsolation: true,
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js')
@@ -29,7 +29,17 @@ ipcMain.handle('dark-mode-toggle', () => {
 ipcMain.handle('dark-mode-system', () => {
   nativeTheme.themeSource = 'system'
 })
-
+ipcMain.handle('get-data', async () => {
+  return new Promise((resolve, reject) => {
+    getData((err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+});
 app.whenReady().then(() => {
   createWindow()
 
